@@ -15,3 +15,12 @@ def average_temp(devices):
     total_temp = sum(device['temp'] for device in devices)
     return total_temp / len(devices) if devices else 0
 print(f"Average Temperature: {average_temp(readings):.15f}")
+
+def hottest_devices(devices):
+    max_temp = devices[0]['temp']
+    for i in range(len(devices)):
+        if devices[i]['temp']>max_temp:
+            max_temp = devices[i]['temp']
+    hottest_device = next(device for device in devices if device['temp'] == max_temp)
+    return hottest_device
+print(hottest_devices(readings))
