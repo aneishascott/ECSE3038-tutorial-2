@@ -37,3 +37,18 @@ def device_status(devices):
         if device['name'] == "fridge":
             print(object_status)
 device_status(readings)
+
+def by_room(devices):
+    devices_by_room = {
+        "hall": [],
+        "attic": [],
+        "kitchen": [],
+        "outside": [],
+    }
+    for device in devices:
+        room = device["room"]
+        if room in devices_by_room:
+            devices_by_room[room].append(device["name"])
+    return devices_by_room
+
+print(f"Devices by Room: {by_room(readings)}")
