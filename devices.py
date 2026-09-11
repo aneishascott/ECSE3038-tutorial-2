@@ -24,3 +24,16 @@ def hottest_devices(devices):
     hottest_device = next(device for device in devices if device['temp'] == max_temp)
     return hottest_device
 print(hottest_devices(readings))
+
+def to_status(device):
+    return "Ok" if device['online'] else "Offline"
+def device_status(devices):
+    for device in devices:
+        
+        object_status = {"device" : device["name"],
+                 "status" : to_status(device),
+                 "celcius" : device["temp"]
+                 } 
+        if device['name'] == "fridge":
+            print(object_status)
+device_status(readings)
